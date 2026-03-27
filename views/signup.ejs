@@ -930,21 +930,26 @@
   }
 
   // ── Submit ──
-document.getElementById('signupForm').addEventListener('submit', e => {
-    e.preventDefault();
+// Inside your <script> in signup.ejs
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop immediate refresh to run validation
+    
     let allOk = true;
     fields.forEach(id => { if (!validateField(id)) allOk = false; });
+    
     if (!document.getElementById('termsCheck').checked) {
         allOk = false;
     }
-    if (!allOk) return;
 
-    const btn = document.getElementById('submitBtn');
-    btn.textContent = 'Creating Account…';
-    btn.disabled = true;
+    if (allOk) {
+        const btn = document.getElementById('submitBtn');
+        btn.textContent = 'Creating Account…';
+        btn.disabled = true;
 
-    // ✅ Actually submit the form to the server
-    e.target.submit();
+        // ✅ IMPORTANT: Use the native form submit method to bypass this listener
+        // and send the POST request to the server.
+        this.submit(); 
+    }
 });
 
   function resetForm(){

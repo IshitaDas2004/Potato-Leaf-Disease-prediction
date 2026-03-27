@@ -162,36 +162,46 @@ app.get('/signup', (req, res) => {
 });
 
 // POST /signup
+
 app.post('/signup', async (req, res) => {
+    // 1. Extract variables from req.body
     const { firstname, lastname, email, password, phone, location, terms_accepted } = req.body;
 
-    if (!firstname || !lastname || !email || !password || !phone || !location)
+    // 2. Validation
+    if (!firstname || !lastname || !email || !password || !phone || !location) {
         return res.status(400).send('All fields are required.');
+    }
 
-    if (password.length < 8)
+    if (password.length < 8) {
         return res.status(400).send('Password must be at least 8 characters.');
+    }
 
     try {
+        // 3. Check if user already exists
         const existing = await client.query(
             'SELECT id FROM users WHERE email = $1', [email]
         );
-        if (existing.rows.length > 0)
+        if (existing.rows.length > 0) {
             return res.status(409).send('An account with this email already exists.');
+        }
 
+        // 4. Hash the password
         const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
-        const result = await client.query(
+        // 5. Insert into Database
+        await client.query(
             `INSERT INTO users (firstname, lastname, email, password, phone, location, terms_accepted)
-             VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+             VALUES ($1, $2, $3, $4, $5, $6, $7)`,
             [firstname, lastname, email, hashedPassword, phone, location, terms_accepted ? true : false]
         );
 
-        const user = result.rows[0];
-
-        req.session.regenerate(err => {
-            if (err) return res.status(500).send('Session error.');
-            req.session.user = { id: user.id, name: user.firstname };
-            res.redirect('/home');
+        // 6. Save session and Redirect to Login (/)
+        req.session.save((err) => {
+            if (err) {
+                console.error('Session save error:', err);
+                return res.status(500).send('Error saving session.');
+            }
+            res.redirect('/'); 
         });
 
     } catch (err) {
