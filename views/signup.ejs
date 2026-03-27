@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image.png">
 <title>PotatoScan — Create Account</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -685,7 +686,7 @@
       </div>
       <div class="success-title">Welcome<br><span style="color:var(--moss)">Aboard!</span></div>
       <p class="success-msg">Your account has been created successfully. You're ready to start scanning potato leaves and protecting your harvest.</p>
-      <a href="#" class="success-btn" onclick="resetForm()">Start Scanning →</a>
+      <a href="/" class="success-btn" onclick="resetForm()">Start Scanning →</a>
     </div>
 
     <!-- Form -->
@@ -707,7 +708,7 @@
         </div>
       </div>
 
-      <form id="signupForm" novalidate>
+    <form id="signupForm" action="/signup" method="POST" novalidate>
 
         <!-- Name row -->
         <div class="form-row">
@@ -717,7 +718,7 @@
               <span class="input-icon">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </span>
-              <input type="text" id="firstname" placeholder="e.g. Arjun" autocomplete="given-name">
+              <input type="text" id="firstname" name="firstname" placeholder="e.g. Arjun" autocomplete="given-name">
               <span class="check-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               </span>
@@ -731,7 +732,7 @@
               <span class="input-icon">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </span>
-              <input type="text" id="lastname" placeholder="e.g. Sharma" autocomplete="family-name">
+              <input type="text" id="lastname" name="lastname" placeholder="e.g. Sharma" autocomplete="family-name">
               <span class="check-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               </span>
@@ -747,7 +748,7 @@
             <span class="input-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </span>
-            <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
             <span class="check-icon">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
@@ -762,7 +763,7 @@
             <span class="input-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </span>
-            <input type="password" id="password" placeholder="Min. 8 characters" autocomplete="new-password">
+            <input type="password" name="password" id="password" placeholder="Min. 8 characters" autocomplete="new-password">
             <button type="button" class="pw-toggle" id="pwToggle" onclick="togglePw()">
               <svg id="eyeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
@@ -782,7 +783,7 @@
           <label class="field-label" for="phone">Phone Number <span class="req">*</span></label>
           <div class="input-wrap">
             <span class="phone-prefix">🇮🇳 +91 <span>|</span></span>
-            <input type="tel" id="phone" class="phone-input" placeholder="98765 43210" autocomplete="tel" maxlength="10">
+            <input type="tel" id="phone" name="phone" class="phone-input" placeholder="98765 43210" autocomplete="tel" maxlength="10">
             <span class="check-icon">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
@@ -797,7 +798,7 @@
             <span class="input-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </span>
-            <input type="text" id="location" placeholder="e.g. West Bengal, India" autocomplete="address-level1">
+            <input type="text" id="location" name="location" placeholder="e.g. West Bengal, India" autocomplete="address-level1">
             <span class="check-icon">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
@@ -809,7 +810,7 @@
 
         <!-- Terms -->
         <div class="terms-row">
-          <input type="checkbox" id="termsCheck">
+          <input type="checkbox" name="terms_accepted" id="termsCheck">
           <label for="termsCheck" class="custom-check"></label>
           <p class="terms-text">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I understand that my crop data may be used to improve the AI model anonymously.</p>
         </div>
@@ -929,25 +930,22 @@
   }
 
   // ── Submit ──
-  document.getElementById('signupForm').addEventListener('submit', e=>{
+document.getElementById('signupForm').addEventListener('submit', e => {
     e.preventDefault();
-    let allOk=true;
-    fields.forEach(id=>{ if(!validateField(id)) allOk=false; });
-    if(!document.getElementById('termsCheck').checked){
-      allOk=false;
+    let allOk = true;
+    fields.forEach(id => { if (!validateField(id)) allOk = false; });
+    if (!document.getElementById('termsCheck').checked) {
+        allOk = false;
     }
-    if(!allOk) return;
+    if (!allOk) return;
 
-    const btn=document.getElementById('submitBtn');
-    btn.textContent='Creating Account…';
-    btn.disabled=true;
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Creating Account…';
+    btn.disabled = true;
 
-    setTimeout(()=>{
-      document.getElementById('mainForm').style.display='none';
-      const s=document.getElementById('successScreen');
-      s.style.display='flex';
-    },1600);
-  });
+    // ✅ Actually submit the form to the server
+    e.target.submit();
+});
 
   function resetForm(){
     document.getElementById('signupForm').reset();

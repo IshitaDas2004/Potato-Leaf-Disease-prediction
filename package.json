@@ -9,7 +9,22 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.13.6",
+    "bcrypt": "^6.0.0",
+    "cron": "^4.4.0",
+    "dotenv": "^17.3.1",
     "ejs": "^5.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "form-data": "^4.0.5",
+    "formdata": "^0.10.4",
+    "multer": "^2.1.1",
+    "node-cron": "^4.2.1",
+    "nodecron": "^0.2.0",
+    "nodemailer": "^8.0.4",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.20.0"
   }
 }
