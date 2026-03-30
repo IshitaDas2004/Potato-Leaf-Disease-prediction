@@ -2,10 +2,9 @@ Developed jointly by : Debarghya Sengupta & Ishita Das.
 
 
 PotatoGuard: AI-Powered Autonomous Crop Protection
-PotatoGuard is an integrated Precision Agriculture ecosystem that automates the detection and treatment of potato leaf diseases. By combining Computer Vision (AI), IoT Actuators, and Cloud Notifications, it transforms traditional reactive farming into a proactive, autonomous defense system.
+PotatoGuard is an integrated Precision Agriculture ecosystem that automates the detection and treatment of potato leaf diseases. By combining Computer Vision (AI), and Cloud Notifications, it transforms traditional reactive farming into a proactive, autonomous defense system.
 
 🌟 Key Features
-📷 Automated Field Monitoring: IoT-enabled cameras (ESP32-CAM/Raspberry Pi) capture high-resolution images of potato leaves at scheduled intervals.
 
 🧠 AI-Driven Diagnosis: A Deep Learning model (CNN) classifies images into categories such as Healthy, Early Blight, or Late Blight with high confidence.
 
