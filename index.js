@@ -220,7 +220,7 @@ passport.deserializeUser(async (id, done) => {
 // GET / — Login page
 app.get('/', (req, res) => {
     if (req.session.user) return res.redirect('/home');
-    res.render('Login.ejs');
+    res.render('Login_multilang.ejs');
 });
 
 // GET /home — pass full user object to EJS
@@ -234,14 +234,14 @@ app.get('/home', isAuth, async (req, res) => {
                 email:        null,
                 isTrial:      true,
             };
-            return res.render('index.ejs', { user });
+            return res.render('index_multilang.ejs', { user });
         }
 
         const result = await client.query(
             'SELECT * FROM users WHERE id = $1', [req.session.user.id]
         );
         const user = result.rows[0];
-        res.render('index.ejs', { user });
+        res.render('index_multilang.ejs', { user });
     } catch (err) {
         console.error('Home route error:', err.message);
         res.redirect('/');
@@ -251,7 +251,7 @@ app.get('/home', isAuth, async (req, res) => {
 // GET /signup
 app.get('/signup', (req, res) => {
     if (req.session.user) return res.redirect('/home');
-    res.render('signup.ejs');
+    res.render('signup_multilang.ejs');
 });
 
 // POST /signup
@@ -356,7 +356,11 @@ app.get('/auth/google/callback',
 //trial 
 // POST /trial — guest trial access (no DB, just name + phone)
 app.post('/trial', (req, res) => {
-    const { trialname, trialphone } = req.body;
+    
+    const trialname  = decodeURIComponent(req.body.trialname  || '');
+    const trialphone = decodeURIComponent(req.body.trialphone || '');
+    // rest stays the same
+
 
     if (!trialname || !trialphone)
         return res.status(400).send('Name and phone are required.');
